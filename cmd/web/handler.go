@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-	"strconv"
 	"html/template"
-	"log"
+	"net/http"
+	"os"
+	"strconv"
 )
 
-func home(w http.ResponseWriter, r *http.Request) {
+func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		http.NotFound(w, r)
+		app.notFound(w)
 		return
 	}
 
@@ -23,36 +23,37 @@ func home(w http.ResponseWriter, r *http.Request) {
 	ts, err := template.ParseFiles(files...)
 	//ts, err := template.ParseFiles("emelifrank.com/snippetbox/ui/html/home.page.tmpl")
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		app.serverError(w, err)
 		return
 	}
 
 	err = ts.Execute(w, nil)
 	if err != nil {
-		log.Println(err.Error())
-		http.Error(w, "Internal Server Error", 500)
+		app.serverError(w, err)
 	}
 }
 
-func showSnippet(w http.ResponseWriter, r *http.Request) {
+func (app *application) showSnippet(w http.ResponseWriter, r *http.Request) {
 	id, err := strconv.Atoi(r.URL.Query().Get("id"))
 	if err != nil || id < 1 {
-		http.NotFound(w, r)
+		app.notFound(w)
 		return
 	}
 
 	fmt.Fprintf(w, "Display a specific snippet with ID %d", id)
 }
 
-func creteSnippet(w http.ResponseWriter, r *http.Request) {
+func (app *application) creteSnippet(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		w.Header().Set("Allow", "POST")
-		//w.WriteHeader(405)
-		//w.Write([]byte("Method Not Allowed"))
-		http.Error(w, "Method Not Allowed", 405)
+		app.clientError(w, http.StatusMethodNotAllowed)
 		return
 	}
 
 	w.Write([]byte("Create a new snippet"))
+}
+
+func (app *application) test(w http.ResponseWriter, r *http.Request) {
+	javaHome := os.Getenv("JAVA_HOME")
+	fmt.Println(javaHome)
 }

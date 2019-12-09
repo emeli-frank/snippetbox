@@ -1,4 +1,4 @@
-module github.com/emeli-frank/snippetbox
+module emeli/snippetbox
 
 go 1.13
 

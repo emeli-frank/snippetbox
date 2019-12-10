@@ -3,20 +3,22 @@ package main
 import (
 	"net/http"
 	"github.com/justinas/alice"
+	"github.com/bmizerany/pat"
 )
 
 func (app *application) routes() http.Handler {
-	standartMiddleware := alice.New(app.recoverPanic, app.logRequest, secureHeaders)
+	standardMiddleware := alice.New(app.recoverPanic, app.logRequest, secureHeaders)
 
-	mux := http.NewServeMux()
-	mux.HandleFunc("/", app.home)
-	mux.HandleFunc("/snippet", app.showSnippet)
-	mux.HandleFunc("/snippet/create", app.creteSnippet)
-	mux.HandleFunc("/test", app.test)
+	mux := pat.New()
+	mux.Get("/", http.HandlerFunc(app.home))
+	mux.Get("/snippet/create", http.HandlerFunc(app.createSnippetForm))
+	mux.Post("/snippet/create", http.HandlerFunc(app.creteSnippet))
+	mux.Get("/snippet/:id", http.HandlerFunc(app.showSnippet))
+	mux.Get("/test", http.HandlerFunc(app.test))
 
 	fileServer := http.FileServer(http.Dir("./ui/static/"))
-	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
+	mux.Get("/static/", http.StripPrefix("/static", fileServer))
 
 	//return app.recoverPanic(app.logRequest(secureHeaders(mux)))
-	return standartMiddleware.Then(mux)
+	return standardMiddleware.Then(mux)
 }

@@ -1,9 +1,8 @@
 package main
 
 import (
+	"emeli/snippetbox/pkg/forms"
 	"html/template"
-	"net/url"
-
 	//"html/template"
 	"path/filepath"
 
@@ -13,8 +12,7 @@ import (
 
 type templateData struct {
 	CurrentYear int
-	FormData url.Values
-	FormErrors map[string]string
+	Form *forms.Form
 	Snippet *models.Snippet
 	Snippets []*models.Snippet
 }

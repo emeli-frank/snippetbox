@@ -86,3 +86,23 @@ func (app *application) test(w http.ResponseWriter, r *http.Request) {
 	javaHome := os.Getenv("JAVA_HOME")
 	fmt.Println(javaHome)
 }
+
+func (app *application) signupUserForm(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func (app *application) signupUser(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func (app *application) loginUserForm(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func (app *application) loginUser(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func (app *application) logoutUser(w http.ResponseWriter, r *http.Request) {
+
+}

@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a7a0e6a7-45cf-4425-b4c4-c971efe2da5f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/web/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/web/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/web/templates.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/web/templates.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/html/home.page.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/ui/html/home.page.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/html/show.page.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/ui/html/show.page.tmpl" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +65,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Go Test.go test emeli/snippetbox/cmd/web">
     <configuration name="go build emeli/snippetbox/cmd/web" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="snippetbox" />
       <working_directory value="$PROJECT_DIR$" />
@@ -77,8 +75,19 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
+    <configuration name="go test emeli/snippetbox/cmd/web" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="snippetbox" />
+      <working_directory value="$PROJECT_DIR$/cmd/web" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="emeli/snippetbox/cmd/web" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.go test emeli/snippetbox/cmd/web" />
         <item itemvalue="Go Build.go build emeli/snippetbox/cmd/web" />
       </list>
     </recent_temporary>

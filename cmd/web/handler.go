@@ -51,7 +51,7 @@ func (app *application) createSnippetForm(w http.ResponseWriter, r *http.Request
 	})
 }
 
-func (app *application) creteSnippet(w http.ResponseWriter, r *http.Request) {
+func (app *application) createSnippet(w http.ResponseWriter, r *http.Request) {
 	if err := r.ParseForm(); err != nil {
 		app.clientError(w, http.StatusBadRequest)
 	}
